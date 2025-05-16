@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <Menu></Menu>
+        <Sidebar></Sidebar>
         <div class="content">
             <router-view></router-view>
 
@@ -11,17 +11,20 @@
 </template>
 
 <script setup>
-import Menu from '../components/Menu.vue';
+import Sidebar from '../components/Menu.vue';
 
 </script>
 
 <style scoped>
-.comntainer {
-    display: flex;
+.container {
+  display: grid;
+  grid-template-columns: 250px auto;
 }
-.content {
-    flex: 1;
-    padding: 20px;
+.menu {
+  grid-column: 1;
+}
+.contenido {
+  grid-column: 2;
 }
 
 </style>

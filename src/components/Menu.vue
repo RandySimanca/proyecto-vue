@@ -16,7 +16,7 @@
 <style>
 .menu{
     width: 200px;
-    background-color: rgb(177, 223, 250);
+    background-color: rgb(148, 149, 150);
     padding: 20px;
 }
 
