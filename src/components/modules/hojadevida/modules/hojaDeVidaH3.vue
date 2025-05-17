@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <form>
         <div class="container">          
                 
                 <div class="image-column">
@@ -115,6 +116,7 @@
         <div class="footer">
             <p>LÍNEA GRATUITA NACIONAL 01800917770 - PÁGINA WEB: www.funcionpublica.gov.co</p>
         </div>
+    </form>
 </body>
 </template>
 

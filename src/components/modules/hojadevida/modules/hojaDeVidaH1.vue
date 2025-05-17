@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <form>
         <div class="container">          
                 
                 <div class="image-column">
@@ -421,6 +422,7 @@
                 </table>
             </div>
         </div>
+    </form>
 </body>        
 </template>
 

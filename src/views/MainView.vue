@@ -1,10 +1,11 @@
 <template>
     <div class="container">
-        <Sidebar></Sidebar>
+        <Sidebar />
         <div class="content">
-            <router-view></router-view>
+          <router-view />
         </div>
-    </div>       
+    </div>
+
   </template>
 
 <script setup>
@@ -15,5 +16,10 @@ import Sidebar from '../components/Menu.vue';
 .container {
   display: grid;
   grid-template-columns: 250px auto;
+}
+
+.content{
+  display: grid;
+
 }
 </style>
