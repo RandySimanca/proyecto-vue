@@ -4,14 +4,11 @@
         <div class="content">
             <router-view></router-view>
         </div>
-
-    </div>
-
+    </div>       
 </template>
 
 <script setup>
 import Sidebar from '../components/Menu.vue';
-
 </script>
 
 <style scoped>
@@ -19,11 +16,10 @@ import Sidebar from '../components/Menu.vue';
   display: grid;
   grid-template-columns: 250px auto;
 }
-.menu {
+.sidebar {
   grid-column: 1;
 }
-.contenido {
+.content {
   grid-column: 2;
 }
-
 </style>
