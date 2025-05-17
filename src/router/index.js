@@ -5,17 +5,29 @@ const router = createRouter({
   routes: [
  
      {
-     path: '/Contador',
-     name: 'Contador',
-     component: () => import('../components/modules/contador/components/Contador.vue'),
+     path: '/hojaDevidaH1',
+     name: 'Hojadevidah1',
+     component: () => import('../components/modules/hojadevida/components/hojaDeVidaH1.vue'),
     },
+
+    {
+      path: '/hojaDeVidaH2',
+      name: 'hojaDeVidaH2',
+      component: () => import('../components/modules/hojadevida/components/hojaDeVidaH2.vue'),
+     },
+
+     {
+      path: '/hojaDeVidaH3',
+      name: 'hojaDeVidaH3',
+      component: () => import('../components/modules/hojadevida/components/hojaDeVidaH3.vue'),
+     },
 
     {
       path: '/ListadeTareas',
       name: 'ListadeTareas',
-      component: () => import('../components/modules/listaDetareas/listaDeTareas/ListaDeTareas.vue'),
+      component: () => import('../components/modules/listaDetareas/modules/ListaDeTareas.vue'),
      },
   ],
 })
 
-export default router
+export default router;

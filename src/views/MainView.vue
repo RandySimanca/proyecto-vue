@@ -3,7 +3,6 @@
         <Sidebar></Sidebar>
         <div class="content">
             <router-view></router-view>
-
         </div>
 
     </div>
