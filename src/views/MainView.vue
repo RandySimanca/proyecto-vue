@@ -5,21 +5,17 @@
             <router-view></router-view>
         </div>
     </div>       
-</template>
+  </template>
 
 <script setup>
 import Sidebar from '../components/Menu.vue';
+
+
 </script>
 
 <style scoped>
 .container {
   display: grid;
   grid-template-columns: 250px auto;
-}
-.sidebar {
-  grid-column: 1;
-}
-.content {
-  grid-column: 2;
 }
 </style>

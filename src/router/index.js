@@ -6,7 +6,7 @@ const router = createRouter({
  
      {
      path: '/hojaDevidaH1',
-     name: 'Hojadevidah1',
+     name: 'hojadevidaH1',
      component: () => import('../components/modules/hojadevida/components/hojaDeVidaH1.vue'),
     },
 
