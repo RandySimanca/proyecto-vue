@@ -7,19 +7,19 @@ const router = createRouter({
      {
      path: '/hojaDevidaH1',
      name: 'hojadevidaH1',
-     component: () => import('../components/modules/hojadevida/components/hojaDeVidaH1.vue'),
+     component: () => import('../components/modules/hojadevida/modules/hojaDeVidaH1.vue'),
     },
 
     {
       path: '/hojaDeVidaH2',
       name: 'hojaDeVidaH2',
-      component: () => import('../components/modules/hojadevida/components/hojaDeVidaH2.vue'),
+      component: () => import('../components/modules/hojadevida/modules/hojaDeVidaH2.vue'),
      },
 
      {
       path: '/hojaDeVidaH3',
       name: 'hojaDeVidaH3',
-      component: () => import('../components/modules/hojadevida/components/hojaDeVidaH3.vue'),
+      component: () => import('../components/modules/hojadevida/modules/hojaDeVidaH3.vue'),
      },
 
     {

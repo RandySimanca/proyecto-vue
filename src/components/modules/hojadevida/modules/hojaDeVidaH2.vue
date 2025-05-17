@@ -12,8 +12,8 @@
                     <img src="@/assets/Escudo.svg" alt="Imagen" class="imagen">
                 </div>
                 <div class="header">
-                    <h2>FORMATO ÚNICO</h2>
-                    <h3>HOJA DE VIDA</h3>
+                    <h3>FORMATO ÚNICO</h3>
+                    <h2>HOJA DE VIDA</h2>
                     <p>Persona Natural</p>
                     <p>(Leyes 190 de 1995, 489 y 443 de 1998)</p>
                 </div>
@@ -491,6 +491,7 @@ body {
         
         .header h2, .header h3, .header p {
             margin: 5px 0;
+            color:#333
         }
         
   
