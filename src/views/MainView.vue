@@ -9,8 +9,6 @@
 
 <script setup>
 import Sidebar from '../components/Menu.vue';
-
-
 </script>
 
 <style scoped>

@@ -5,8 +5,8 @@ const router = createRouter({
   routes: [
  
      {
-     path: '/hojaDevidaH1',
-     name: 'hojadevidaH1',
+     path: '/hojaDeVidaH1',
+     name: 'hojadeVidaH1',
      component: () => import('../components/modules/hojadevida/modules/hojaDeVidaH1.vue'),
     },
 
