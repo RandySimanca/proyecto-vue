@@ -30,43 +30,47 @@
             <h3 class="subtitle">TIEMPO TOTAL DE EXPERIENCIA</h3>
             <p>INDIQUE EL TIEMPO TOTAL DE SU EXPERIENCIA LABORAL EN NÚMERO DE AÑOS Y MESES.</p>
             
-            <div class="section">            
-                <table class="experience-table">
-                    <thead>
-                        <tr>
-                            <th>OCUPACIÓN</th>
-                            <th>TIEMPO DE EXPERIENCIA</th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th>AÑOS</th>
-                            <th>MESES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>SERVIDOR PÚBLICO</td>
-                            <td><input type="number" min="0" max="99"></td>
-                            <td><input type="number" min="0" max="11"></td>
-                        </tr>
-                        <tr>
-                            <td>EMPLEADO DEL SECTOR PRIVADO</td>
-                            <td><input type="number" min="0" max="99"></td>
-                            <td><input type="number" min="0" max="11"></td>
-                        </tr>
-                        <tr>
-                            <td>TRABAJADOR INDEPENDIENTE</td>
-                            <td><input type="number" min="0" max="99"></td>
-                            <td><input type="number" min="0" max="11"></td>
-                        </tr>
-                        <tr>
-                            <td><strong>TOTAL TIEMPO EXPERIENCIA</strong></td>
-                            <td><input type="number" min="0" max="99"></td>
-                            <td><input type="number" min="0" max="11"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
+            <div class="section">
+    <div class="section-number">4</div>
+    <h3 class="subtitle">TIEMPO TOTAL DE EXPERIENCIA</h3>
+    <p>INDIQUE EL TIEMPO TOTAL DE SU EXPERIENCIA LABORAL EN NÚMERO DE AÑOS Y MESES.</p>
+
+    <table class="experience-table">
+      <thead>
+        <tr>
+          <th>OCUPACIÓN</th>
+          <th>TIEMPO DE EXPERIENCIA</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>AÑOS</th>
+          <th>MESES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SERVIDOR PÚBLICO</td>
+          <td><input type="number" v-model.number="publico.anios" min="0" max="99" /></td>
+          <td><input type="number" v-model.number="publico.meses" min="0" max="11" /></td>
+        </tr>
+        <tr>
+          <td>EMPLEADO DEL SECTOR PRIVADO</td>
+          <td><input type="number" v-model.number="privado.anios" min="0" max="99" /></td>
+          <td><input type="number" v-model.number="privado.meses" min="0" max="11" /></td>
+        </tr>
+        <tr>
+          <td>TRABAJADOR INDEPENDIENTE</td>
+          <td><input type="number" v-model.number="independiente.anios" min="0" max="99" /></td>
+          <td><input type="number" v-model.number="independiente.meses" min="0" max="11" /></td>
+        </tr>
+        <tr>
+          <td><strong>TOTAL TIEMPO EXPERIENCIA</strong></td>
+          <td><input type="number" :value="totalAnios" readonly /></td>
+          <td><input type="number" :value="totalMeses" readonly /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
         </div>
         
         <!-- Sección 5: Firma del servidor público o contratista -->
@@ -79,14 +83,25 @@
             </div>
             
             <div class="form-group">
-                <label for="signing-date">Ciudad y fecha de diligenciamiento:</label>
-                <input type="text" id="signing-date" placeholder="Ej: Bogotá, 13 de Mayo de 2025">
-            </div>
+  <label for="signing-city">Ciudad:</label>
+  <input type="text" id="signing-city" placeholder="Ej: Bogotá" />
+</div>
+
+<div class="form-group">
+  <label for="signing-date">Fecha de diligenciamiento:</label>
+  <input type="date" id="signing-date" />
+</div>
+
+
             
             <div class="signature-area">
-                <p>________________________________</p>
-                <p>FIRMA DEL SERVIDOR PÚBLICO O CONTRATISTA</p>
-            </div>
+  <label for="firma">FIRMA DEL SERVIDOR PÚBLICO O CONTRATISTA</label><br />
+  <input type="file" id="firma" accept=".jpg,.jpeg,.png" @change="mostrarFirma" />
+  <div v-if="firmaUrl">
+    <img :src="firmaUrl" alt="Firma cargada" style="margin-top: 10px; max-width: 300px; height: auto;" />
+  </div>
+</div>
+
         </div>
         
         <!-- Sección 6: Observaciones del jefe de recursos humanos -->
@@ -122,12 +137,185 @@
 
 <script setup>
 
+import { reactive, ref, computed, watch } from 'vue'
+
+// 🔷 1. Modelo de experiencia laboral
+const experiencias = reactive([
+  {
+    tipo: ref(''), // 'publica', 'privada', 'independiente'
+    ingreso: { dia: '', mes: '', anio: '' },
+    retiro:  { dia: '', mes: '', anio: '' }
+  },
+  { tipo: ref(''), ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } },
+  { tipo: ref(''), ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } },
+  { tipo: ref(''), ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } }
+])
+
+// 🔷 2. Totales por categoría
+const publico = reactive({ anios: 0, meses: 0 })
+const privado = reactive({ anios: 0, meses: 0 })
+const independiente = reactive({ anios: 0, meses: 0 })
+
+// 🔷 3. Función para calcular duración
+function calcularDuracion({ ingreso, retiro }) {
+  const desde = new Date(`${ingreso.anio}-${ingreso.mes}-${ingreso.dia}`)
+  const hasta = new Date(`${retiro.anio}-${retiro.mes}-${retiro.dia}`)
+
+  if (isNaN(desde) || isNaN(hasta) || hasta < desde) return { anios: 0, meses: 0 }
+
+  let anios = hasta.getFullYear() - desde.getFullYear()
+  let meses = hasta.getMonth() - desde.getMonth()
+  if (hasta.getDate() < desde.getDate()) meses--
+  if (meses < 0) {
+    anios--
+    meses += 12
+  }
+  return { anios, meses }
+}
+
+// 🔷 4. Calcular y actualizar totales
+function recalcularTotales() {
+  // Reiniciar acumuladores
+  publico.anios = publico.meses = 0
+  privado.anios = privado.meses = 0
+  independiente.anios = independiente.meses = 0
+
+  experiencias.forEach((exp) => {
+    const { anios, meses } = calcularDuracion(exp)
+    const totalMeses = anios * 12 + meses
+
+    switch (exp.tipo.value) {
+      case 'publica':
+        const sumaPub = publico.meses + totalMeses
+        publico.anios = Math.floor(sumaPub / 12)
+        publico.meses = sumaPub % 12
+        break
+      case 'privada':
+        const sumaPriv = privado.meses + totalMeses
+        privado.anios = Math.floor(sumaPriv / 12)
+        privado.meses = sumaPriv % 12
+        break
+      case 'independiente':
+        const sumaInd = independiente.meses + totalMeses
+        independiente.anios = Math.floor(sumaInd / 12)
+        independiente.meses = sumaInd % 12
+        break
+    }
+  })
+}
+
+// 🔷 5. Calcular total global
+const totalAnios = computed(() =>
+  publico.anios + privado.anios + independiente.anios +
+  Math.floor((publico.meses + privado.meses + independiente.meses) / 12)
+)
+
+const totalMeses = computed(() =>
+  (publico.meses + privado.meses + independiente.meses) % 12
+)
+
+// 🔷 6. Reaccionar a cambios
+watch(experiencias, recalcularTotales, { deep: true })
+
+/*import { reactive, computed } from 'vue'
+
+const publico = reactive({ anios: 0, meses: 0 })
+const privado = reactive({ anios: 0, meses: 0 })
+const independiente = reactive({ anios: 0, meses: 0 })
+
+const totalAnios = computed(() => {
+  const sumaMeses = publico.meses + privado.meses + independiente.meses
+  const sumaAnios = publico.anios + privado.anios + independiente.anios
+  return sumaAnios + Math.floor(sumaMeses / 12)
+})
+
+const totalMeses = computed(() => {
+  const sumaMeses = publico.meses + privado.meses + independiente.meses
+  return sumaMeses % 12
+})
+
+
+import { ref } from 'vue'
+
+const firmaUrl = ref(null)
+
+function mostrarFirma(event) {
+  const archivo = event.target.files[0]
+  if (archivo && (archivo.type === 'image/jpeg' || archivo.type === 'image/png')) {
+    const lector = new FileReader()
+    lector.onload = (e) => {
+      firmaUrl.value = e.target.result
+    }
+    lector.readAsDataURL(archivo)
+  } else {
+    firmaUrl.value = null
+  }
+}
+
+
+const ciudad = ref('')
+const fecha = ref(null)*/                             /*hasta aqui el script*/
+
+
+/*const publico     = reactive({ anios: 0, meses: 0 })
+const privado     = reactive({ anios: 0, meses: 0 })
+const independiente = reactive({ anios: 0, meses: 0 })
+
+const empleos = reactive([
+  { ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } },
+  { ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } },
+  { ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } },
+  { ingreso: { dia: '', mes: '', anio: '' }, retiro: { dia: '', mes: '', anio: '' } }
+])
+
+function calcularDuracion({ ingreso, retiro }) {
+  const inicio = new Date(`${ingreso.anio}-${ingreso.mes}-${ingreso.dia}`)
+  const fin = new Date(`${retiro.anio}-${retiro.mes}-${retiro.dia}`)
+
+  if (isNaN(inicio) || isNaN(fin) || fin < inicio) return { anios: 0, meses: 0 }
+
+  let anios = fin.getFullYear() - inicio.getFullYear()
+  let meses = fin.getMonth() - inicio.getMonth()
+
+  if (fin.getDate() < inicio.getDate()) meses--
+  if (meses < 0) {
+    anios--
+    meses += 12
+  }
+
+  return { anios, meses }
+}
+
+const totalAnios = computed(() => {
+  let totalMeses = publico.meses + privado.meses + independiente.meses
+  let totalAnios = publico.anios + privado.anios + independiente.anios
+
+  empleos.forEach(emp => {
+    const duracion = calcularDuracion(emp)
+    totalAnios += duracion.anios
+    totalMeses += duracion.meses
+  })
+
+  return totalAnios + Math.floor(totalMeses / 12)
+})
+
+const totalMeses = computed(() => {
+  let totalMeses = publico.meses + privado.meses + independiente.meses
+  empleos.forEach(emp => {
+    const duracion = calcularDuracion(emp)
+    totalMeses += duracion.meses
+  })
+  return totalMeses % 12
+})
+*/
+ 
+
 </script>
 
 <style scoped>
 
-body {
-            font-family: Arial, sans-serif;
+        body {
+           font-family: Arial, sans-serif;
             margin: 1px;
             padding: 20px;
             font-size: 12px;
@@ -154,7 +342,7 @@ body {
                
         .header {
             text-align: center;
-        }
+       }
         
         .header h2, .header h3, .header p {
             margin: 5px 0;
