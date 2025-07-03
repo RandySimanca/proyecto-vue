@@ -271,21 +271,21 @@
             
             <div class="form-group">
                 <label>EDUCACIÓN BÁSICA Y MEDIA</label>
-                <p>MARQUE CON UNA X EL ÚLTIMO GRADO APROBADO (LOS GRADOS DE 1o. A 6o. DE BACHILLERATO EQUIVALEN A LOS GRADOS 6o. A 11o. DE EDUCACIÓN BÁSICA SECUNDARIA Y MEDIA)</p>
+                <p class="p"> MARQUE CON UNA X EL ÚLTIMO GRADO APROBADO (LOS GRADOS DE 1o. A 6o. DE BACHILLERATO EQUIVALEN A LOS GRADOS 6o. A 11o. DE EDUCACIÓN BÁSICA SECUNDARIA Y MEDIA)</p>
                 
                 
             </div>
             
             
             <div class="form-row">
-                <div class="form-group col-2">
+                <div class="form-group col-3">
                     <label>EDUCACIÓN BÁSICA</label>
                     <div style="display: flex; margin-top: 5px;">
-                        <div class="form-group col2">
+                        <div class="form-group col-2">
                                 <!--<input type="radio" id="primaria" name="educacion-basica" value="primaria">-->
                                 <label for="primaria">PRIMARIA</label>
 
-                            <div style="display: flex; margin-top: 10px;">
+                            <div style="display: flex; margin-top: 5px;">
                                 <div class="checkbox-group">
                                     <input type="checkbox" id="grado-1" name="grado" value="1">
                                     <label for="grado-1">1o.</label>
@@ -313,7 +313,7 @@
                                     <!--<input type="radio" id="secundaria" name="educacion-basica" value="secundaria">-->
                                     <label for="secundaria">SECUNDARIA</label>
                                 </div>
-                                <div style="display: flex; margin-top: 10px;">    
+                                <div style="display: flex; margin-top: 5px;">    
                                 <div class="checkbox-group">
                         <input type="checkbox" id="grado-6" name="grado" value="6">
                         <label for="grado-6">6o.</label>
@@ -336,32 +336,33 @@
                                    <!--<input type="radio" id="media" name="educacion-basica" value="media">-->
                                     <label for="media">MEDIA</label>
                                 </div>
-                                <div style="display: flex; margin-top: 10px;"> 
+                                <div style="display: flex; margin-top: 5px;"> 
                                     <div class="checkbox-group">
-                        <input type="checkbox" id="grado-10" name="grado" value="10">
-                        <label for="grado-10">10</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="grado-11" name="grado" value="11">
-                        <label for="grado-11">11</label>
-                    </div>
+                                        <input type="checkbox" id="grado-10" name="grado" value="10">
+                                        <label for="grado-10">10</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="grado-11" name="grado" value="11">
+                                        <label for="grado-11">11</label>
+                                    </div>
                                 </div>
                     
                 </div>
                 
                 <div class="form-group col-2">
                     <label for="titulo-bachiller">TÍTULO OBTENIDO:</label>
+                    <h2></h2>
                     <input type="text" id="titulo-bachiller" class="form-control">
                 </div>
                 
                 <div class="form-group col-2">
                     <label>FECHA DE GRADO</label>
                     <div style="display: flex; margin-top: 5px;">
-                        <div class="form-group" style="width: 60px; margin-right: 5px;">
+                        <div class="form-group col-2" style="width: 60px; margin-right: 5px;">
                             <label for="mes-grado">MES</label>
                             <input type="text" id="mes-grado" class="form-control">
                         </div>
-                        <div class="form-group" style="width: 60px;">
+                        <div class="form-group col-2" style="width: 60px;">
                             <label for="ano-grado">AÑO</label>
                             <input type="text" id="ano-grado" class="form-control">
                         </div>
@@ -371,7 +372,7 @@
             
             <div class="form-group">
                 <label>EDUCACION SUPERIOR (PREGRADO Y POSTGRADO)</label>
-                <p>DILIGENCIE ESTE PUNTO EN ESTRICTO ORDEN CRONOLÓGICO, EN MODALIDAD ACADÉMICA ESCRIBA:
+                <p class="p">DILIGENCIE ESTE PUNTO EN ESTRICTO ORDEN CRONOLÓGICO, EN MODALIDAD ACADÉMICA ESCRIBA:
                 TC (TÉCNICA), TL (TECNOLÓGICA), TE (TECNOLÓGICA ESPECIALIZADA), UN (UNIVERSITARIA),
                 ES (ESPECIALIZACIÓN), MG (MAESTRÍA O MAGISTER), DOC (DOCTORADO O PHD),
                 RELACIONE AL FRENTE EL NÚMERO DE LA TARJETA PROFESIONAL (SI ÉSTA HA SIDO PREVISTA EN UNA LEY).</p>
@@ -446,7 +447,7 @@ body {
             font-family: Arial, sans-serif;
             margin: 1px;
             padding: 20px;
-            font-size: 12px;
+            font-size: 1px;
         }
         
         .container {
@@ -567,10 +568,10 @@ body {
         .checkbox-group {
             display: flex;
             align-items: left;
-            margin-right: 10px;
+            margin-right: 5px;
         }
         .checkbox-group input {
-            margin-left: 1px;
+            margin-left: 0px;
         }
         .table {
             width: 100%;
@@ -581,6 +582,7 @@ body {
             border: 1px solid #ccc;
             padding: 1px;
             text-align: center;
+            font-size: 12px;
         }
         .table th {
             background-color: #f0f0f0;
@@ -607,6 +609,12 @@ body {
             text-align: center;
             font-size: 10px;
         }
+
+        .p {
+            font-size: 11px;
+
+        }
+        
 
 
 </style>
