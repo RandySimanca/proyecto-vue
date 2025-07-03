@@ -135,56 +135,55 @@
                             <label for="dia-nac">DÍA</label>
                             <input type="text" id="dia-nac" class="form-control">
                         </div>
-                        <div class="form-group" style="width: 30px; margin-right: 5px;">
+                        <div class="form-group" style="width: 30px; margin-right: 5px;">                        
                             <label for="mes-nac">MES</label>
                             <input type="text" id="mes-nac" class="form-control">
                         </div>
-                        <div class="form-group" style="width: 60px;">
+
+                        <div class="form-group" style="width: 30px; margin-right: 5px;">    
                             <label for="ano-nac">AÑO</label>
                             <input type="text" id="ano-nac" class="form-control">
                         </div>
                     </div>
-                </div>
-                
-                <div class="form-group col-2">
-                    <label for="pais-nac">PAÍS</label>
-                    <input type="text" id="pais-nac" class="form-control">
-                </div>
-                
-                <div class="form-group col-2">
-                    <label for="depto-nac">DEPTO</label>
-                    <input type="text" id="depto-nac" class="form-control">
-                </div>
-                
-                <div class="form-group col-2">
-                    <label for="municipio-nac">MUNICIPIO</label>
-                    <input type="text" id="municipio-nac" class="form-control">
-                </div>
-            </div>
+                    
+                    <div class="form-group col-2">
+                            <label for="pais-nac">PAÍS</label>
+                            <input type="text" id="pais-nac" class="form-control">
+                    </div>
+                    
+                    <div class="form-group col-2">                        
+                            <label for="depto-nac">DEPTO</label>
+                            <input type="text" id="depto-nac" class="form-control">
+                    </div>
+
+                    <div class="form-group col-2">                        
+                            <label for="municipio-nac">MUNICIPIO</label>
+                            <input type="text" id="municipio-nac" class="form-control">
+                    </div>
+                </div>          
             
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="dir-corr">DIRECCIÓN DE CORRESPONDENCIA</label>
-                    <input type="text" id="dir-corr" class="form-control">
-                </div>
-                
-                <div class="form-group col-2">
-                    <label for="pais-corr">PAÍS</label>
-                    <input type="text" id="pais-corr" class="form-control">
-                </div>
-                
-                <div class="form-group col-2">
-                    <label for="depto-corr">DEPTO</label>
-                    <input type="text" id="depto-corr" class="form-control">
-                </div>
-                
-                <div class="form-group col-2">
-                    <label for="municipio-corr">MUNICIPIO</label>
-                    <input type="text" id="municipio-corr" class="form-control">
-                </div>
-            </div>
             
-            <div class="form-row">
+                <div class="form-group col-2">
+                    <label>DIRECCIÓN DE CORRESPONDENCIA</label>
+                
+                <div style="display: flex; margin-top: 3px;">
+                    <div class="form-group col-2">
+                        <label for="pais-corr">PAÍS</label>
+                        <input type="text" id="pais-corr" class="form-control">
+                    </div>
+                    
+                    <div class="form-group col-2">
+                        <label for="depto-corr">DEPTO</label>
+                        <input type="text" id="depto-corr" class="form-control">
+                    </div>
+                    
+                    <div class="form-group col-2">
+                        <label for="municipio-corr">MUNICIPIO</label>
+                        <input type="text" id="municipio-corr" class="form-control">
+                    </div>
+            
+               </div>
+        
                 <div class="form-group col-2">
                     <label for="direccion-corr">DIRECCIÓN</label>
                     <input type="text" id="direccion-corr" class="form-control">
@@ -200,6 +199,8 @@
                     <input type="email" id="email" class="form-control">
                 </div>
             </div>
+            </div> 
+            
 
             <div class="form-row">
                 <div class="form-group" style="width: 100%;">
@@ -272,28 +273,48 @@
                 <label>EDUCACIÓN BÁSICA Y MEDIA</label>
                 <p>MARQUE CON UNA X EL ÚLTIMO GRADO APROBADO (LOS GRADOS DE 1o. A 6o. DE BACHILLERATO EQUIVALEN A LOS GRADOS 6o. A 11o. DE EDUCACIÓN BÁSICA SECUNDARIA Y MEDIA)</p>
                 
-                <div style="display: flex; margin-top: 10px;">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="grado-1" name="grado" value="1">
-                        <label for="grado-1">1o.</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="grado-2" name="grado" value="2">
-                        <label for="grado-2">2o.</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="grado-3" name="grado" value="3">
-                        <label for="grado-3">3o.</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="grado-4" name="grado" value="4">
-                        <label for="grado-4">4o.</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="grado-5" name="grado" value="5">
-                        <label for="grado-5">5o.</label>
-                    </div>
-                    <div class="checkbox-group">
+                
+            </div>
+            
+            
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label>EDUCACIÓN BÁSICA</label>
+                    <div style="display: flex; margin-top: 5px;">
+                        <div class="form-group col2">
+                                <!--<input type="radio" id="primaria" name="educacion-basica" value="primaria">-->
+                                <label for="primaria">PRIMARIA</label>
+
+                            <div style="display: flex; margin-top: 10px;">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="grado-1" name="grado" value="1">
+                                    <label for="grado-1">1o.</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="grado-2" name="grado" value="2">
+                                    <label for="grado-2">2o.</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="grado-3" name="grado" value="3">
+                                    <label for="grado-3">3o.</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="grado-4" name="grado" value="4">
+                                    <label for="grado-4">4o.</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="grado-5" name="grado" value="5">
+                                    <label for="grado-5">5o.</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                                <div class="form-group col-2">
+                                    <!--<input type="radio" id="secundaria" name="educacion-basica" value="secundaria">-->
+                                    <label for="secundaria">SECUNDARIA</label>
+                                </div>
+                                <div style="display: flex; margin-top: 10px;">    
+                                <div class="checkbox-group">
                         <input type="checkbox" id="grado-6" name="grado" value="6">
                         <label for="grado-6">6o.</label>
                     </div>
@@ -309,7 +330,14 @@
                         <input type="checkbox" id="grado-9" name="grado" value="9">
                         <label for="grado-9">9o.</label>
                     </div>
-                    <div class="checkbox-group">
+
+                    </div>
+                                <div class="form-group col-2">
+                                   <!--<input type="radio" id="media" name="educacion-basica" value="media">-->
+                                    <label for="media">MEDIA</label>
+                                </div>
+                                <div style="display: flex; margin-top: 10px;"> 
+                                    <div class="checkbox-group">
                         <input type="checkbox" id="grado-10" name="grado" value="10">
                         <label for="grado-10">10</label>
                     </div>
@@ -317,26 +345,8 @@
                         <input type="checkbox" id="grado-11" name="grado" value="11">
                         <label for="grado-11">11</label>
                     </div>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label>EDUCACIÓN BÁSICA</label>
-                    <div style="display: flex; margin-top: 5px;">
-                        <div class="checkbox-group">
-                            <input type="radio" id="primaria" name="educacion-basica" value="primaria">
-                            <label for="primaria">PRIMARIA</label>
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="radio" id="secundaria" name="educacion-basica" value="secundaria">
-                            <label for="secundaria">SECUNDARIA</label>
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="radio" id="media" name="educacion-basica" value="media">
-                            <label for="media">MEDIA</label>
-                        </div>
-                    </div>
+                                </div>
+                    
                 </div>
                 
                 <div class="form-group col-2">
