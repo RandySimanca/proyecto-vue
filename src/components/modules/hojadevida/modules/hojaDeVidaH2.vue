@@ -464,10 +464,50 @@
                                </div>
                             </div>
     </form>
+   
+<button @click="agregarExperiencia">+ Agregar experiencia</button>
+
 </body>
 </template>
 
 <script setup>
+function crearExperiencia() {
+  return {
+    empresa: '',
+    tipoEntidad: '', // 'publica' o 'privada'
+    pais: '',
+    departamento: '',
+    municipio: '',
+    correo: '',
+    telefonos: '',
+    ingreso: { dia: '', mes: '', anio: '' },
+    retiro: { dia: '', mes: '', anio: '' },
+    cargo: '',
+    dependencia: '',
+    direccion: ''
+  }
+}
+
+
+import { ref } from 'vue'
+
+const experiencias = ref([
+  crearNuevaExperiencia()
+])
+
+function crearNuevaExperiencia() {
+  return {
+    tipo: '',
+    ingreso: { dia: '', mes: '', anio: '' },
+    retiro: { dia: '', mes: '', anio: '' }
+  }
+}
+
+function agregarExperiencia() {
+  experiencias.value.push(crearNuevaExperiencia())
+}
+
+
 
 </script>
 

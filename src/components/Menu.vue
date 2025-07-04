@@ -1,17 +1,33 @@
 <template>
-    <div class="menu">
+
+<div class="menu">
         <h2>Menú</h2>
-        <ul>
+       <ul>
         <li><router-link to="/hojaDeVidaH1">Datos Personales</router-link></li>
         <li><router-link to="/hojaDeVidaH2">Experiencia Laboral</router-link></li>
         <li><router-link to="/hojaDeVidaH3">Tiempo Total de Experiencia</router-link></li>
         <li><router-link to="/ListaDeTareas">Lista de Tareas</router-link></li>
-        </ul>
+        <li><router-link to="/HojaDeVidaCompleta">Imprimir Hoja de Vida</router-link> </li>
+       </ul>
     </div>
 
 </template>
 
 <script setup>
+
+/*localStorage.setItem('auth', 'true')
+localStorage.setItem('usuario', usuario.value) // por ejemplo, 'Randy'
+router.push('/hojaDeVidaH1')*/
+
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+function logout() {
+  localStorage.removeItem('auth')
+  router.push('/login')
+}
+
 
 </script>
 
