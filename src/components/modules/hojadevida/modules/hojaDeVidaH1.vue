@@ -439,6 +439,13 @@
 
 <script setup>
 
+import { watch, defineEmits, ref } from 'vue'
+
+const emit = defineEmits(['update'])
+const datos = ref({ nombre: '', cedula: '' })
+
+watch(datos, () => emit('update', datos.value), { deep: true })
+
 </script>
 
 <style scoped>

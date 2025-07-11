@@ -16,7 +16,7 @@
   import HojaDeVidaH3 from '@/components/modules/hojadevida/modules/hojaDeVidaH3.vue'
   import ListaDeTareas from '@/components/modules/listaDetareas/modules/ListaDeTareas.vue'
   
-  import { ref, nextTick } from 'vue'
+import { ref, nextTick } from 'vue'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 
@@ -48,6 +48,50 @@ async function exportarPorSecciones() {
 
   pdf.save('hoja-de-vida.pdf')
 }
+
+const datosPersonales = ref({})
+const experiencia = ref([])
+const totalTiempo = ref({})
+const tareas = ref([])
+
+function compilarHojaDeVida() {
+  return {
+    datosPersonales: datosPersonales.value,
+    experiencia: experiencia.value,
+    totalTiempo: totalTiempo.value,
+    tareas: tareas.value
+  }
+}
+
+async function guardar() {
+  try {
+    const datosFinales = compilarHojaDeVida()
+    const respuesta = await guardarHojaDeVida(datosFinales)
+    alert(respuesta.mensaje)
+  } catch (e) {
+    alert('Hubo un error al guardar')
+  }
+}
+
+/*import { guardarHojaDeVida } from '@/services/hojaDeVidaService'
+
+const formulario = {
+  datosPersonales: { nombre: 'Randy', cedula: '123' },
+  experiencia:*/ /* [],
+  totalTiempo: { meses: 22 },
+  tareas: ['Documentar', 'Testear']
+}
+
+async function guardar() {
+  try {
+    const respuesta = await guardarHojaDeVida(formulario)
+    alert(respuesta.mensaje)
+  } catch (e) {
+    alert('Ocurrió un error al guardar 😓')
+  }
+}*/
+
+
 
   </script>
   
